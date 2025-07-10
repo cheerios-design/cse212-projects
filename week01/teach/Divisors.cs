@@ -1,24 +1,30 @@
-public static class Divisors {
-    /// <summary>
-    /// Entry point for the Divisors class
-    /// </summary>
-    public static void Run() {
-        List<int> list = FindDivisors(80);
-        Console.WriteLine("<List>{" + string.Join(", ", list) + "}"); // <List>{1, 2, 4, 5, 8, 10, 16, 20, 40}
-        List<int> list1 = FindDivisors(79);
-        Console.WriteLine("<List>{" + string.Join(", ", list1) + "}"); // <List>{1}
+public class Divisors {
+    public static List<int> FindDivisors(int number) {
+        List<int> results = new();
+        
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                results.Add(i);
+            }
+        }
+        
+        return results;
     }
 
-    /// <summary>
-    /// Create a list of all divisors for a number including 1
-    /// and excluding the number itself. Modulo will be used
-    /// to test divisibility.
-    /// </summary>
-    /// <param name="number">The number to find the divisor</param>
-    /// <returns>List of divisors</returns>
-    private static List<int> FindDivisors(int number) {
-        List<int> results = new();
-        // TODO problem 1
-        return results;
+    public static void Run() {
+        // Test the FindDivisors method with various numbers
+        Console.WriteLine("Testing FindDivisors method:");
+        
+        // Test case 1: 12 - should return {1, 2, 3, 4, 6}
+        var divisors12 = FindDivisors(12);
+        Console.WriteLine($"Divisors of 12: {{{string.Join(", ", divisors12)}}}");
+        
+        // Test case 2: 17 - should return {1} (prime number)
+        var divisors17 = FindDivisors(17);
+        Console.WriteLine($"Divisors of 17: {{{string.Join(", ", divisors17)}}}");
+        
+        // Test case 3: 20 - should return {1, 2, 4, 5, 10}
+        var divisors20 = FindDivisors(20);
+        Console.WriteLine($"Divisors of 20: {{{string.Join(", ", divisors20)}}}");
     }
 }
